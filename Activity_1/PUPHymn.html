@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUP Hymn Player</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            display: flex;
+            background-color: #700000;
+            color: white;
+            height: 80px;
+            width: 100%;
+            padding: 5px;
+            z-index: 2;
+        }
+        .logo {
+            height: 60px;
+            width: 60px;
+            padding: 10px;
+        }
+        .title-container {
+            display: flex;
+            flex-direction: column;
+        }
+        .main-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+        .subtitle {
+            font-size: 15px;
+            margin-top: 3px;
+        }
+        main {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .background-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .background-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+        .content-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 20px;
+        }
+        .hymn-title {
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            color: #700000;
+            text-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+        }
+        .hymn-subtitle { 
+            font-size: 20px; 
+            font-weight: bold; 
+            text-align:center; 
+            margin-top: 5px; 
+            color: black; 
+        }
+        .lyrics-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            height: 300px;
+            position: relative;
+        }
+        .lyrics-display {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: transform 0.5s ease-in-out; 
+        }
+        .lyrics-line {
+            font-size: 20px; 
+            height: 40px; 
+            line-height: 40px;
+            margin: 0;
+            opacity: 0.5;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .lyrics-line.highlight {
+            font-weight: bold;
+            font-size: 24px; 
+            color: #700000;
+            opacity: 1;
+        }
+        .controls-container {
+            width: 80%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        audio {
+            width: 100%;
+            margin: 10px 0;
+        }
+        audio::-webkit-media-controls-panel {
+            background-color: #f0f0f0;
+        }
+        audio::-webkit-media-controls-play-button {
+            background-color: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://www.pup.edu.ph/about/images/PUPLogo.png" class="logo" alt="PUP Logo">
+        <div class="title-container">
+            <h1 class="main-title">Polytechnic University of the Philippines</h1>
+            <h5 class="subtitle">The Country's First Polytechnic U</h5>
+        </div>
+    </header>
+    <main>
+        <div class="background-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/PUP_main_bldg_-_santa_mesa%2C_manila.jpg" 
+                 alt="PUP background" 
+                 class="background-image">
+        </div>
+        <div class="content-container">
+            <h2 class="hymn-title">PUP HYMN</h2>
+            <div class="lyrics-container">
+                <div class="lyrics-display" id="lyrics-display">
+                </div>
+            </div>
+            <div class="controls-container">
+                <audio id="audio-player" controls>
+                    <source src="https://bscs-3-1-webdev.s3.ap-southeast-1.amazonaws.com/puphymn.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lyrics with timestamps (in seconds)
+            const lyrics = [
+                { text: "", time: 0}, 
+                { text: "Sintang Paaralan", time: 13 },
+                { text: "Tanglaw ka ng bayan", time: 15 },
+                { text: "Pandayan ng isip ng kabataan", time: 18 },
+                { text: "Kami ay dumating nang salat sa yaman", time: 24 },
+                { text: "Hanap na dunong ay iyong alay", time: 29 },
+                { text: "Ang layunin mong makatao", time: 35 },
+                { text: "Dinarangal ang Pilipino", time: 41 },
+                { text: "Ang iyong aral, diwa, adhikang taglay", time: 47 },
+                { text: "PUP, aming gabay", time: 53 },
+                { text: "Paaralang dakila", time: 56 },
+                { text: "PUP, pinagpala", time: 62 },
+                { text: "Gagamitin ang karunungan", time: 69 },
+                { text: "Mula sa iyo, para sa bayan", time: 74 },
+                { text: "Ang iyong aral, diwa, adhikang taglay", time: 82 },
+                { text: "PUP, aming gabay", time: 86 },
+                { text: "Paaralang dakila", time: 90 },
+                { text: "PUP, pinagpala", time: 95 }, 
+            ];
+
+            // Audio element
+            const audioPlayer = document.getElementById('audio-player');
+            const lyricsDisplay = document.getElementById('lyrics-display');
+
+            // Load lyrics into the container
+            lyrics.forEach((line, index) => {
+                const div = document.createElement('div');
+                div.className = 'lyrics-line';
+                div.textContent = line.text;
+                div.setAttribute('data-time', line.time);
+                div.addEventListener('click', () => {
+                    audioPlayer.currentTime = line.time; // Jump to time on click
+                });
+                lyricsDisplay.appendChild(div);
+            });
+
+            // Update lyrics display
+            function updateLyrics() {
+                const currentTime = audioPlayer.currentTime;
+
+                // Find the active lyric index
+                const activeIndex = lyrics.findIndex((line, index) => {
+                    return index === lyrics.length - 1 || (currentTime >= line.time && currentTime < lyrics[index + 1].time);
+                });
+
+                // Update all lines
+                [...lyricsDisplay.children].forEach((line, index) => {
+                    line.classList.remove('highlight');
+                    if (index === activeIndex) {
+                        line.classList.add('highlight'); // Highlight current line
+                    }
+                });
+
+                // Smooth scrolling to keep the current line in view
+                if (activeIndex !== -1) {
+                    const lineHeight = 40; // Height of each line in pixels
+                    const scrollPosition = activeIndex * lineHeight - 150;
+
+                    // Scroll the lyrics display
+                    lyricsDisplay.style.transform = `translateY(${-scrollPosition}px)`;
+                }
+            }
+
+            // Event listeners
+            audioPlayer.addEventListener('timeupdate', updateLyrics);
+            audioPlayer.addEventListener('play', updateLyrics);
+            audioPlayer.addEventListener('seeked', updateLyrics);
+            audioPlayer.addEventListener('pause', updateLyrics);
+
+            // Initialize lyrics display
+            updateLyrics();
+        });
+    </script>
+</body>
+</html>
