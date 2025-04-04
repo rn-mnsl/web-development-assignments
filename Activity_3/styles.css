@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&family=Preahvihear&display=swap');
+
+:root { 
+    --primary-color: #351C0E;
+    --secondary-color: #EED8C0;
+    --text-color: #351C0E;
+
+    --font-one: 'Poetsen One';
+    --font-two: 'Preahvihear';
+}
+
+html, body { 
+    font-family: var(--font-one), sans-serif;
+    height: 100%;
+    margin: 0; 
+    background: url(/Activity_3/assets/last-bg.png);
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column; 
+}
+
+main {
+    flex: 1; /* Allow the main content to take up all available space */
+}
+
+header { 
+    display: flex;
+    justify-content:center;
+    top: 0; 
+    background-color: var(--secondary-color);
+    height: 75px;
+    z-index: 100;
+    position: sticky;
+}
+
+footer { 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--secondary-color);
+    height: 50px;
+    width: 100%; 
+    position: fixed; 
+    bottom: 0; 
+    z-index: 100; 
+    font-family: var(--font-two), sans-serif;
+}
+
+.logo { 
+    height: 100px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    /* background: url(/Activity_3/assets/wall-bg.png); */
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.sidebar ul li {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Preahvihear', sans-serif;
+    font-size: 25px;
+    display: block;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.content {
+    margin-left: 250px;
+    margin-top: 40px;
+}
+
+.content section {
+    display: none;
+}
+.content section.active {
+    display: block;
+}
+
+.home { 
+    color: var(--text-color);
+}
+
+h1{ 
+    font-size: 35px;
+    font-weight: 100;
+}
+
+h2 { 
+    font-size: 25px; 
+    font-weight: 100;
+}
+
+.home p { 
+    font-family: var(--font-two);
+    margin-top: -35px;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.introduction { 
+    display: flex; /* Enable Flexbox */
+    align-items: center; /* Align items vertically */
+    gap: 20px; /* Add space between the text and image */
+    padding-right: 40px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+.introduction p { 
+    flex: 1;
+    margin-top: 10px;
+}
+
+.introduction img {
+    max-width: 250px; /* Set a maximum width for the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.visit-us { 
+    margin-top: -20px;
+}
+
+.visit-us h2 { 
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+hr { 
+    width: 1150px;
+    margin-left: -5px;
+}
+
+br { 
+    display: block;
+    margin: 20px 0;
+}
+
+.locations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: -25px;
+}
+
+.location-card {
+    border-radius: 10px;
+    border: 2px solid var(--secondary-color); /* Add a border with your secondary color */
+    padding: 1rem;
+    flex: 1 1 300px;
+    max-width: 320px;
+    border-color: var(--primary-color)
+}
+
+.location-card h3 {
+    margin-top: 0;
+    font-size: 17px;
+    color: #4b2e2e;
+    font-family: var(--font-two);
+    margin-bottom: 5px;
+}
+
+.location-card p {
+    margin: 0.1rem 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.menu-section {
+    padding: 2rem;
+}
+
+.menu-section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-section h2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.menu-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.menu-card {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 240px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    flex: 1 1 220px;
+}
+
+.menu-card img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.menu-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #4b2e2e;
+}
+
+.menu-card p {
+    font-size: 0.9rem;
+    margin: 0.3rem 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #c74c3c;
+}
+
+.music-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.music-section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.music-section p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #444;
+}
+
+.music-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.music-card {
+    background: #fff8f3;
+    border: 2px solid #e4d0c8;
+    border-radius: 15px;
+    padding: 1rem;
+    width: 260px;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.music-card:hover {
+    transform: translateY(-5px);
+}
+
+.music-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+}
+
+.music-card h3 {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #4b2e2e;
+}
+
+.music-card audio {
+    width: 100%;
+    margin-top: 0.5rem;
+    filter: sepia(0.2) contrast(1.2) brightness(0.95);
+    border-radius: 5px;
+}
+
+.jobs-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.jobs-section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.jobs-section p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #444;
+}
+
+.jobs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.job-card {
+    background: #fffefc;
+    border: 2px solid #cdbbb3;
+    border-radius: 15px;
+    width: 250px;
+    padding: 1rem;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+}
+
+.job-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 0.75rem;
+}
+
+.job-card h3 {
+    font-size: 1.25rem;
+    color: #4b2e2e;
+    margin-bottom: 0.5rem;
+}
+
+.job-card p {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.apply-info {
+    background: #fdf6f0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px dashed #d2b7a3;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.apply-info h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #6a3e2e;
+}
+
+.apply-info p {
+    font-size: 1rem;
+}
