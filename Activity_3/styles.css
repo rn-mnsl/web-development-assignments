@@ -31,9 +31,10 @@ header {
     justify-content:center;
     top: 0; 
     background-color: var(--secondary-color);
+    width: 100%;
     height: 75px;
     z-index: 100;
-    position: sticky;
+    position: fixed;
 }
 
 footer { 
@@ -101,7 +102,8 @@ footer {
 
 .content {
     margin-left: 250px;
-    margin-top: 40px;
+    margin-top: 110px;
+    color: var(--primary-color);
 }
 
 .content section {
@@ -164,6 +166,8 @@ h2 {
 hr { 
     width: 1150px;
     margin-left: -5px;
+    height: 2px; 
+    background-color: var(--primary-color);
 }
 
 br { 
@@ -201,13 +205,37 @@ br {
     color: #333;
 }
 
+.call-to-action { 
+    padding-top: 60px;
+}
+
+.menu-title { 
+    text-align:center; 
+    padding-bottom: 10px;
+}
+
+.menu-title p {
+    margin-top: -50px;
+}
+
+.coffee-title { 
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.coffee-title p { 
+    margin-top: -20px;
+}
 .menu-section {
+    padding: 2rem;
+    text-align: center;
     padding: 2rem;
 }
 
 .menu-section h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    justify-self: center;
 }
 
 .menu-section h2 {
@@ -224,51 +252,69 @@ br {
 
 .menu-card {
     background: #fff;
-    border: 1px solid #e2e2e2;
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
-    padding: 1rem;
-    max-width: 240px;
+    padding: 1.5rem;
+    max-width: 220px;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
     text-align: center;
     flex: 1 1 220px;
+    height: 300px;
+    margin-bottom: 10px;
+    gap: 20px;
 }
 
 .menu-card img {
-    width: 100px;
-    height: auto;
+    width: 150px;
+    height: 100px;
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
 .menu-card h3 {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
+    margin: 1rem 0;
+    font-size: 1.3rem;
     color: #4b2e2e;
 }
 
 .menu-card p {
-    font-size: 0.9rem;
+    font-size: 12px;    
     margin: 0.3rem 0;
 }
 
+.ending { 
+    margin-bottom: 80px;
+}
+.menu p { 
+    font-family: var(--font-two), sans-serif;
+}
+
+.menu-card h4 { 
+    margin-top: 20px;
+}
+
 .price {
-    font-weight: bold;
+    font-family: var(--font-one), sans-serif;
+    font-weight: 200;
     color: #c74c3c;
 }
 
 .music-section {
-    padding: 2rem;
+    padding: 0.5rem;
     text-align: center;
+    margin-top: -40px;
 }
 
-.music-section h1 {
+.music-section h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 
 .music-section p {
+    font-family: var(--font-two), sans-serif;
     font-size: 1rem;
+    margin-top: -8px;
     margin-bottom: 2rem;
-    color: #444;
 }
 
 .music-grid {
@@ -280,12 +326,13 @@ br {
 
 .music-card {
     background: #fff8f3;
-    border: 2px solid #e4d0c8;
+    border: 2px solid var(--primary-color);
     border-radius: 15px;
     padding: 1rem;
-    width: 260px;
+    width: 300px;
     box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    height: 450px;
 }
 
 .music-card:hover {
@@ -299,10 +346,14 @@ br {
 }
 
 .music-card h3 {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 1.2rem;
+    font-family: var(--font-one), sans-serif;
+    font-size: 1.5rem;
     margin: 0.5rem 0;
     color: #4b2e2e;
+}
+
+.music-card p { 
+    margin-bottom: 5px;
 }
 
 .music-card audio {
@@ -313,19 +364,21 @@ br {
 }
 
 .jobs-section {
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
+    margin-top: -60px;
 }
 
 .jobs-section h1 {
     font-size: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .jobs-section p {
+    font-family: var(--font-two), sans-serif;
     margin-bottom: 1.5rem;
     font-size: 1rem;
-    color: #444;
+
 }
 
 .jobs-grid {
@@ -337,10 +390,10 @@ br {
 }
 
 .job-card {
-    background: #fffefc;
-    border: 2px solid #cdbbb3;
+    background: #fff8f3;
+    border: 2px solid var(--primary-color);
     border-radius: 15px;
-    width: 250px;
+    width: 300px;
     padding: 1rem;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.08);
     transition: transform 0.3s;
@@ -357,13 +410,13 @@ br {
 }
 
 .job-card h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: #4b2e2e;
     margin-bottom: 0.5rem;
 }
 
 .job-card p {
-    font-size: 0.95rem;
+    font-size: 12px;
     color: #333;
 }
 
@@ -372,16 +425,83 @@ br {
     padding: 1.5rem;
     border-radius: 10px;
     border: 1px dashed #d2b7a3;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 50px auto 70px;
 }
 
 .apply-info h2 {
-    font-size: 1.4rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
     color: #6a3e2e;
 }
 
 .apply-info p {
     font-size: 1rem;
+}
+
+.play-toggle {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.control-btn:hover {
+    color: var(--primary-color);
+}
+
+.track-progress {
+    width: 100%;
+    appearance: none;
+    height: 8px;
+    border-radius: 3px;
+    background: #d6bfae;
+    cursor: pointer;
+}
+
+.track-progress::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.kuripot-player { 
+    margin-top: 25px;
+}
+
+.job-requirements {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 0.7rem;
+    font-family: var(--font-two), sans-serif;
+}
+
+.job-requirements li {
+    margin-bottom: 6px;
+    list-style-type: disc;
 }
